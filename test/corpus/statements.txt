@@ -1,0 +1,20 @@
+====================
+Variables / constants
+====================
+
+var test = 1
+const test = 1
+
+---
+
+(source_file
+    (var_statement
+        (var_keyword)
+        (identifier)
+        (constant
+            (int)))
+    (const_statement
+        (const_keyword)
+        (identifier)
+        (constant
+            (int))))

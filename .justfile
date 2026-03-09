@@ -6,3 +6,6 @@ parse src:
 
 highlight src:
     tree-sitter highlight {{ src }}
+
+test:
+    tree-sitter test

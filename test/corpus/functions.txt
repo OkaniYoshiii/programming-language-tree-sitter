@@ -1,0 +1,27 @@
+=========
+Functions
+=========
+
+fn test(a i32, b string) string {
+    return a
+}
+
+---
+
+(source_file
+    (function_definition
+        (fn_keyword)
+        (identifier)
+        (parameters
+            (parameter
+                (identifier)
+                (type))
+            (parameter
+                (identifier)
+                (type)))
+        (type)
+        (block
+            (statement
+                (return_statement
+                    (return_keyword)
+                    (identifier))))))
