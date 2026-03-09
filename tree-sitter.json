@@ -1,0 +1,48 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "pl",
+      "camelcase": "Pl",
+      "title": "Programming Language",
+      "scope": "source.pl",
+      "file-types": ["pl"],
+      "highlights": "queries/highlights.scm",
+      "injection-regex": "^pl$",
+      "class-name": "TreeSitterPl"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Pl grammar for tree-sitter",
+    "authors": [
+      {
+        "name": "OkaniYoshiii",
+        "email": "dragut31620@gmail.com"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/tree-sitter/tree-sitter-pl"
+    }
+  },
+  "bindings": {
+    "c": false,
+    "go": false,
+    "java": false,
+    "node": false,
+    "python": false,
+    "rust": false,
+    "swift": false,
+    "zig": false
+  },
+  "theme": {
+    "keyword": "purple",
+    "identifier": "red",
+    "type": {
+      "italic": true,
+      "color": "#2f2bfb"
+    },
+    "string": "orange"
+  }
+}
