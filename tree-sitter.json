@@ -3,7 +3,7 @@
   "grammars": [
     {
       "name": "pl",
-      "camelcase": "Pl",
+      "camelcase": "pl",
       "title": "Programming Language",
       "scope": "source.pl",
       "file-types": ["pl"],
