@@ -17,6 +17,10 @@
           },
           {
             "type": "SYMBOL",
+            "name": "struct_definition"
+          },
+          {
+            "type": "SYMBOL",
             "name": "var_statement"
           },
           {
@@ -382,6 +386,46 @@
     "union_keyword": {
       "type": "STRING",
       "value": "union"
+    },
+    "struct_keyword": {
+      "type": "STRING",
+      "value": "struct"
+    },
+    "struct_definition": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "struct_keyword"
+        },
+        {
+          "type": "STRING",
+          "value": " "
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "STRING",
+          "value": " {"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_new_line"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "struct_field"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
     },
     "union_definition": {
       "type": "SEQ",

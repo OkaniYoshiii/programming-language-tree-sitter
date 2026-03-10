@@ -1,0 +1,21 @@
+=============
+Structs
+=============
+
+struct Person {
+    Name string,
+    Age i32,
+}
+
+---
+
+(source_file
+    (struct_definition
+        (struct_keyword)
+        (identifier)
+        (struct_field
+            (identifier)
+            (type))
+        (struct_field
+            (identifier)
+            (type))))
