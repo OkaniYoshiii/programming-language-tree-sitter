@@ -19,6 +19,7 @@ export default grammar({
           $.function_definition,
           $.union_definition,
           $.struct_definition,
+          $.package_definition,
           $.var_statement,
           $.const_statement,
           $._new_line,
@@ -45,6 +46,7 @@ export default grammar({
     const_keyword: ($) => token(prec(1, "const")),
     union_keyword: ($) => token(prec(1, "union")),
     struct_keyword: ($) => token(prec(1, "struct")),
+    package_keyword: ($) => token(prec(1, "package")),
 
     // DEFINTIONS
     function_definition: ($) =>
@@ -53,6 +55,8 @@ export default grammar({
       seq($.struct_keyword, " ", $.identifier, " {", $._new_line, repeat($.struct_field), "}"),
     union_definition: ($) =>
       seq($.union_keyword, " ", $.identifier, " {", $._new_line, repeat($.struct_field), "}"),
+    package_definition: ($) =>
+      seq($.package_keyword, " ", $.identifier),
 
     // STATEMENTS
     const_statement: ($) =>

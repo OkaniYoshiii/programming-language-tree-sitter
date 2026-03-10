@@ -1,0 +1,12 @@
+==============
+Packages
+==============
+
+package Console
+
+---
+
+(source_file
+    (package_definition
+        (package_keyword)
+        (identifier)))
