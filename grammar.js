@@ -60,7 +60,7 @@ export default grammar({
     var_statement: ($) =>
       seq($.var_keyword, " ", $.identifier, " = ", choice($.identifier, $.expression, $.constant), $._new_line),
     return_statement: ($) =>
-      seq($.return_keyword, " ", optional(choice($.identifier, $.constant))),
+      seq($.return_keyword, " ", optional(choice($.identifier, $.constant)), $._new_line),
 
     // OTHERS
     constant: ($) => choice($.int, $.string),
