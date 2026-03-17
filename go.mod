@@ -1,4 +1,4 @@
-module github.com/OkaniYoshiii/tree-sitter-programming-language
+module github.com/okaniyoshiii/tree-sitter-programming-language
 
 go 1.22
 
