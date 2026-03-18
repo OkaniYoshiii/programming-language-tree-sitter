@@ -10,7 +10,9 @@
 export default grammar({
   name: "pl",
 
-  extras: ($) => [],
+  extras: ($) => [
+    /\s/,
+  ],
 
   reserved: {
     global: $ => [
@@ -27,22 +29,27 @@ export default grammar({
     source_file: ($) =>
       repeat(
         choice(
-          $.function_definition,
-          $.union_definition,
-          $.struct_definition,
-          $.package_definition,
-          $.var_statement,
-          $.const_statement,
-          $.if_statement,
-          $._new_line,
+          seq($._statement, $._terminator),
+          seq($._definition, $._terminator),
         ),
       ),
 
+    _definition: ($) => choice(
+      $.function_definition,
+      $.union_definition,
+      $.struct_definition,
+      $.package_definition,
+    ),
     // MAIN LANGUAGE CONSTRUCTS
-    statement: ($) =>
-      choice($.var_statement, $.const_statement, $.return_statement, $.if_statement),
+    _statement: ($) =>
+      choice(
+        $.var_statement,
+        $.const_statement,
+        $.return_statement,
+        $.if_statement
+      ),
     block: ($) =>
-      seq("{", $._new_line, repeat(seq(optional($._indentation), $.statement)), "}"),
+      seq("{", repeat($._statement), "}"),
     type: ($) => choice("i32", "f32", "string"),
     identifier: ($) => /[a-zA-Z]+/,
     expression: ($) => choice($._boolean_expression),
@@ -75,11 +82,11 @@ export default grammar({
 
     // DEFINTIONS
     function_definition: ($) =>
-      seq($.fn_keyword, " ", $.identifier, "(", optional($.parameters), ") ", $.type, " ", $.block, $._new_line),
+      seq($.fn_keyword, " ", $.identifier, "(", optional($.parameters), ") ", $.type, " ", $.block),
     struct_definition: ($) =>
-      seq($.struct_keyword, " ", $.identifier, " {", $._new_line, repeat($.struct_field), "}"),
+      seq($.struct_keyword, " ", $.identifier, " {", repeat($.struct_field), "}"),
     union_definition: ($) =>
-      seq($.union_keyword, " ", $.identifier, " {", $._new_line, repeat($.struct_field), "}"),
+      seq($.union_keyword, " ", $.identifier, " {", repeat($.struct_field), "}"),
     package_definition: ($) =>
       seq($.package_keyword, " ", $.identifier),
 
@@ -97,13 +104,13 @@ export default grammar({
 
     // STATEMENTS
     const_statement: ($) =>
-      seq($.const_keyword, " ", $.identifier, " = ", choice($.identifier, $.expression, $.constant), $._new_line),
+    seq($.const_keyword, " ", $.identifier, " = ", choice($.identifier, $.expression, $.constant)),
     var_statement: ($) =>
-      seq($.var_keyword, " ", $.identifier, " = ", choice($.identifier, $.expression, $.constant), $._new_line),
+    seq($.var_keyword, " ", $.identifier, " = ", choice($.identifier, $.expression, $.constant)),
     return_statement: ($) =>
-      seq($.return_keyword, " ", optional(choice($.identifier, $.constant)), $._new_line),
+    seq($.return_keyword, " ", optional(choice($.identifier, $.constant))),
     if_statement: ($) =>
-      seq($.if_keyword, ' ', field('condition', $.expression), ' ', $.block, $._new_line),
+    seq($.if_keyword, ' ', field('condition', $.expression), ' ', $.block),
 
     // OTHERS
     constant: ($) => choice($.int, $.string, $.true, $.false),
@@ -112,10 +119,10 @@ export default grammar({
     struct_fields: ($) =>
       seq($.struct_field),
     struct_field: ($) =>
-      seq(repeat($._indentation), $.identifier, repeat(" "), $.type, ',', $._new_line),
+    seq($.identifier, repeat(" "), $.type, ','),
 
     // HELPERS
-    _new_line: ($) => choice("\r\n", "\n", "\r"),
     _indentation: ($) => /[\t\s]+/,
+    _terminator: ($) => choice('\n', ';'),
   },
 });

@@ -35,8 +35,7 @@ if true {
         (expression
             (true))
         (block
-            (statement
-                (return_statement
-                    (return_keyword)
-                    (constant
-                        (true)))))))
+            (return_statement
+                (return_keyword)
+                (constant
+                    (true))))))
