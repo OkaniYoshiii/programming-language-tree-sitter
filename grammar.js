@@ -53,7 +53,7 @@ export default grammar({
       seq("{", repeat($._statement), "}"),
     type: ($) => choice("i32", "f32", "string"),
     identifier: ($) => /[a-zA-Z]+/,
-    expression: ($) => prec(1, choice($.identifier, $._boolean_expression, $.constant_expression)),
+    _expression: ($) => prec(1, choice($.identifier, $._boolean_expression, $.constant_expression)),
 
     // LITTERALS
     _string: ($) => /"(.*?)"/,
@@ -106,13 +106,13 @@ export default grammar({
 
     // STATEMENTS
     const_statement: ($) =>
-    seq($.const_keyword, " ", $.identifier, " = ", choice($.identifier, $.expression, $.constant_expression)),
+    seq($.const_keyword, " ", $.identifier, " = ", choice($.identifier, $._expression)),
     var_statement: ($) =>
-    seq($.var_keyword, " ", $.identifier, " = ", choice($.identifier, $.expression, $.constant_expression)),
+    seq($.var_keyword, " ", $.identifier, " = ", choice($.identifier, $._expression)),
     return_statement: ($) =>
-    seq($.return_keyword, " ", optional($.expression)),
+    seq($.return_keyword, " ", optional($._expression)),
     if_statement: ($) =>
-    seq($.if_keyword, ' ', field('condition', $.expression), ' ', $.block),
+    seq($.if_keyword, ' ', field('condition', $._expression), ' ', $.block),
 
     // OTHERS
     parameter: ($) => seq($.identifier, " ", $.type),

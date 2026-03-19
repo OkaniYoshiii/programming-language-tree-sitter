@@ -11,13 +11,11 @@ const test = 1
     (var_statement
         (var_keyword)
         (identifier)
-        (expression
-            (constant_expression)))
+        (constant_expression))
     (const_statement
         (const_keyword)
         (identifier)
-        (expression
-            (constant_expression))))
+        (constant_expression)))
 
 ===================
 If statement
@@ -32,10 +30,8 @@ if true {
 (source_file
     (if_statement
         (if_keyword)
-        (expression
-            (constant_expression))
+        (constant_expression)
         (block
             (return_statement
                 (return_keyword)
-                (expression
-                    (constant_expression))))))
+                (constant_expression)))))

@@ -145,7 +145,7 @@
       "type": "PATTERN",
       "value": "[a-zA-Z]+"
     },
-    "expression": {
+    "_expression": {
       "type": "PREC",
       "value": 1,
       "content": {
@@ -501,11 +501,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "expression"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "constant_expression"
+              "name": "_expression"
             }
           ]
         }
@@ -539,11 +535,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "expression"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "constant_expression"
+              "name": "_expression"
             }
           ]
         }
@@ -565,7 +557,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "expression"
+              "name": "_expression"
             },
             {
               "type": "BLANK"
@@ -590,7 +582,7 @@
           "name": "condition",
           "content": {
             "type": "SYMBOL",
-            "name": "expression"
+            "name": "_expression"
           }
         },
         {

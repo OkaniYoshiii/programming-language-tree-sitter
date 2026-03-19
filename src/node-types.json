@@ -43,34 +43,6 @@
           "named": true
         },
         {
-          "type": "expression",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "constant_expression",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "expression",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "constant_expression",
-          "named": true
-        },
-        {
           "type": "equality_operator",
           "named": true
         },
@@ -96,6 +68,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "constant_expression",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "function_definition",
@@ -133,12 +110,48 @@
     "named": true,
     "fields": {
       "condition": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
           {
-            "type": "expression",
+            "type": " ",
+            "named": false
+          },
+          {
+            "type": "constant_expression",
             "named": true
+          },
+          {
+            "type": "equality_operator",
+            "named": true
+          },
+          {
+            "type": "false",
+            "named": false
+          },
+          {
+            "type": "greater_or_equal_than_operator",
+            "named": true
+          },
+          {
+            "type": "greater_than_operator",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "less_or_equal_than_operator",
+            "named": true
+          },
+          {
+            "type": "less_than_operator",
+            "named": true
+          },
+          {
+            "type": "true",
+            "named": false
           }
         ]
       }
@@ -220,7 +233,31 @@
       "required": true,
       "types": [
         {
-          "type": "expression",
+          "type": "constant_expression",
+          "named": true
+        },
+        {
+          "type": "equality_operator",
+          "named": true
+        },
+        {
+          "type": "greater_or_equal_than_operator",
+          "named": true
+        },
+        {
+          "type": "greater_than_operator",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "less_or_equal_than_operator",
+          "named": true
+        },
+        {
+          "type": "less_than_operator",
           "named": true
         },
         {
@@ -357,11 +394,27 @@
           "named": true
         },
         {
-          "type": "expression",
+          "type": "equality_operator",
+          "named": true
+        },
+        {
+          "type": "greater_or_equal_than_operator",
+          "named": true
+        },
+        {
+          "type": "greater_than_operator",
           "named": true
         },
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "less_or_equal_than_operator",
+          "named": true
+        },
+        {
+          "type": "less_than_operator",
           "named": true
         },
         {
