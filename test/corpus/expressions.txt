@@ -16,47 +16,37 @@ var a = a == a
         (var_keyword)
         (identifier)
         (expression
-            (constant
-                (int))
+            (constant_expression)
             (equality_operator)
-            (constant
-                (int))))
+            (constant_expression)))
     (var_statement
         (var_keyword)
         (identifier)
         (expression
-            (constant
-                (int))
+            (constant_expression)
             (less_or_equal_than_operator)
-            (constant
-                (int))))
+            (constant_expression)))
     (var_statement
         (var_keyword)
         (identifier)
         (expression
-            (constant
-                (int))
+            (constant_expression)
             (greater_or_equal_than_operator)
-            (constant
-                (int))))
+            (constant_expression)))
     (var_statement
         (var_keyword)
         (identifier)
         (expression
-            (constant
-                (int))
+            (constant_expression)
             (less_than_operator)
-            (constant
-                (int))))
+            (constant_expression)))
     (var_statement
         (var_keyword)
         (identifier)
         (expression
-            (constant
-                (int))
+            (constant_expression)
             (greater_than_operator)
-            (constant
-                (int))))
+            (constant_expression)))
     (var_statement
         (var_keyword)
         (identifier)

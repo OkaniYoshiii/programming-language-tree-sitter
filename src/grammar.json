@@ -146,27 +146,39 @@
       "value": "[a-zA-Z]+"
     },
     "expression": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "_boolean_expression"
-        }
-      ]
+      "type": "PREC",
+      "value": 1,
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "identifier"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_boolean_expression"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "constant_expression"
+          }
+        ]
+      }
     },
-    "string": {
+    "_string": {
       "type": "PATTERN",
       "value": "\"(.*?)\""
     },
-    "int": {
+    "_int": {
       "type": "PATTERN",
       "value": "\\d+"
     },
-    "true": {
+    "_true": {
       "type": "STRING",
       "value": "true"
     },
-    "false": {
+    "_false": {
       "type": "STRING",
       "value": "false"
     },
@@ -381,16 +393,41 @@
         }
       ]
     },
+    "constant_expression": {
+      "type": "PREC",
+      "value": 1,
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "_int"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_string"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_true"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "_false"
+          }
+        ]
+      }
+    },
     "_boolean_expression": {
       "type": "CHOICE",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "true"
+          "name": "_true"
         },
         {
           "type": "SYMBOL",
-          "name": "false"
+          "name": "_false"
         },
         {
           "type": "SYMBOL",
@@ -432,7 +469,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "constant"
+          "name": "constant_expression"
         }
       ]
     },
@@ -468,7 +505,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "constant"
+              "name": "constant_expression"
             }
           ]
         }
@@ -506,7 +543,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "constant"
+              "name": "constant_expression"
             }
           ]
         }
@@ -527,17 +564,8 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "identifier"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "constant"
-                }
-              ]
+              "type": "SYMBOL",
+              "name": "expression"
             },
             {
               "type": "BLANK"
@@ -572,27 +600,6 @@
         {
           "type": "SYMBOL",
           "name": "block"
-        }
-      ]
-    },
-    "constant": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "int"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "string"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "true"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "false"
         }
       ]
     },
@@ -695,12 +702,7 @@
       "value": "\\s"
     }
   ],
-  "conflicts": [
-    [
-      "_boolean_expression",
-      "constant"
-    ]
-  ],
+  "conflicts": [],
   "precedences": [],
   "externals": [],
   "inline": [],

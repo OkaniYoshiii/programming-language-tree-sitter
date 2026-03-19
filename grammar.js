@@ -21,9 +21,7 @@ export default grammar({
     ]
   },
 
-  conflicts: $ => [
-    [$._boolean_expression, $.constant],
-  ],
+  conflicts: $ => [],
 
   rules: {
     source_file: ($) =>
@@ -55,13 +53,13 @@ export default grammar({
       seq("{", repeat($._statement), "}"),
     type: ($) => choice("i32", "f32", "string"),
     identifier: ($) => /[a-zA-Z]+/,
-    expression: ($) => choice($._boolean_expression),
+    expression: ($) => prec(1, choice($.identifier, $._boolean_expression, $.constant_expression)),
 
     // LITTERALS
-    string: ($) => /"(.*?)"/,
-    int: ($) => /\d+/,
-    true: ($) => 'true',
-    false: ($) => 'false',
+    _string: ($) => /"(.*?)"/,
+    _int: ($) => /\d+/,
+    _true: ($) => 'true',
+    _false: ($) => 'false',
 
     // KEYWORDS
     fn_keyword: ($) => "fn",
@@ -94,29 +92,29 @@ export default grammar({
       seq($.package_keyword, " ", $.identifier),
 
     // EXPRESSIONS
+    constant_expression: ($) => prec(1, choice($._int, $._string, $._true, $._false)),
     _boolean_expression: ($) =>
       choice(
-        $.true,
-        $.false,
+        $._true,
+        $._false,
         $._comparison_expression,
       ),
     _comparison_expression: ($) =>
       seq($._simple_expression, ' ', $._comparison_operator, ' ', $._simple_expression),
     _simple_expression: ($) =>
-      choice($.identifier, $.constant),
+      choice($.identifier, $.constant_expression),
 
     // STATEMENTS
     const_statement: ($) =>
-    seq($.const_keyword, " ", $.identifier, " = ", choice($.identifier, $.expression, $.constant)),
+    seq($.const_keyword, " ", $.identifier, " = ", choice($.identifier, $.expression, $.constant_expression)),
     var_statement: ($) =>
-    seq($.var_keyword, " ", $.identifier, " = ", choice($.identifier, $.expression, $.constant)),
+    seq($.var_keyword, " ", $.identifier, " = ", choice($.identifier, $.expression, $.constant_expression)),
     return_statement: ($) =>
-    seq($.return_keyword, " ", optional(choice($.identifier, $.constant))),
+    seq($.return_keyword, " ", optional($.expression)),
     if_statement: ($) =>
     seq($.if_keyword, ' ', field('condition', $.expression), ' ', $.block),
 
     // OTHERS
-    constant: ($) => choice($.int, $.string, $.true, $.false),
     parameter: ($) => seq($.identifier, " ", $.type),
     parameters: ($) => seq(repeat(seq($.parameter, ", ")), $.parameter),
     struct_fields: ($) =>

@@ -11,10 +11,10 @@ var test = 10
     (var_statement
         (var_keyword)
         (identifier)
-        (constant
-            (string)))
+        (expression
+            (constant_expression)))
     (var_statement
         (var_keyword)
         (identifier)
-        (constant
-            (int))))
+        (expression
+            (constant_expression))))

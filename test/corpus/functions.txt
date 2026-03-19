@@ -23,4 +23,5 @@ fn test(a i32, b string) string {
         (block
             (return_statement
                 (return_keyword)
-                (identifier)))))
+                (expression
+                    (identifier))))))

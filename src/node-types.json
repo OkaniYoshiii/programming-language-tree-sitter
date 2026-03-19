@@ -39,7 +39,7 @@
           "named": true
         },
         {
-          "type": "constant",
+          "type": "constant_expression",
           "named": true
         },
         {
@@ -54,31 +54,9 @@
     }
   },
   {
-    "type": "constant",
+    "type": "constant_expression",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "false",
-          "named": true
-        },
-        {
-          "type": "int",
-          "named": true
-        },
-        {
-          "type": "string",
-          "named": true
-        },
-        {
-          "type": "true",
-          "named": true
-        }
-      ]
-    }
+    "fields": {}
   },
   {
     "type": "expression",
@@ -86,18 +64,14 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "constant",
+          "type": "constant_expression",
           "named": true
         },
         {
           "type": "equality_operator",
-          "named": true
-        },
-        {
-          "type": "false",
           "named": true
         },
         {
@@ -118,10 +92,6 @@
         },
         {
           "type": "less_than_operator",
-          "named": true
-        },
-        {
-          "type": "true",
           "named": true
         }
       ]
@@ -250,11 +220,7 @@
       "required": true,
       "types": [
         {
-          "type": "constant",
-          "named": true
-        },
-        {
-          "type": "identifier",
+          "type": "expression",
           "named": true
         },
         {
@@ -387,7 +353,7 @@
       "required": true,
       "types": [
         {
-          "type": "constant",
+          "type": "constant_expression",
           "named": true
         },
         {
@@ -455,7 +421,7 @@
   },
   {
     "type": "false",
-    "named": true
+    "named": false
   },
   {
     "type": "fn_keyword",
@@ -482,10 +448,6 @@
     "named": true
   },
   {
-    "type": "int",
-    "named": true
-  },
-  {
     "type": "less_or_equal_than_operator",
     "named": true
   },
@@ -506,16 +468,12 @@
     "named": false
   },
   {
-    "type": "string",
-    "named": true
-  },
-  {
     "type": "struct_keyword",
     "named": true
   },
   {
     "type": "true",
-    "named": true
+    "named": false
   },
   {
     "type": "union_keyword",

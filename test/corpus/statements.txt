@@ -11,13 +11,13 @@ const test = 1
     (var_statement
         (var_keyword)
         (identifier)
-        (constant
-            (int)))
+        (expression
+            (constant_expression)))
     (const_statement
         (const_keyword)
         (identifier)
-        (constant
-            (int))))
+        (expression
+            (constant_expression))))
 
 ===================
 If statement
@@ -33,9 +33,9 @@ if true {
     (if_statement
         (if_keyword)
         (expression
-            (true))
+            (constant_expression))
         (block
             (return_statement
                 (return_keyword)
-                (constant
-                    (true))))))
+                (expression
+                    (constant_expression))))))
